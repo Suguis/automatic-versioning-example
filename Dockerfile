@@ -1,8 +1,9 @@
 FROM alpine:latest
 
-COPY echo_version.sh /usr/local/bin/echo_version.sh
-COPY VERSION.txt /usr/local/bin/VERSION.txt
+WORKDIR /app
 
-RUN chmod +x /usr/local/bin/echo_version.sh
+COPY echo_version.sh VERSION.txt ./
 
-ENTRYPOINT ["/usr/local/bin/echo_version.sh"]
+RUN chmod +x echo_version.sh
+
+CMD ["/app/echo_version.sh"]
