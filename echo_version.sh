@@ -1,5 +1,5 @@
 #!/bin/bash
 
-VERSION=$(cat version.txt)
+VERSION=$(cat VERSION.txt)
 
 echo "Current version is: $VERSION"

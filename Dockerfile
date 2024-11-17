@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 COPY echo_version.sh /usr/local/bin/echo_version.sh
-COPY version.txt /usr/local/bin/version.txt
+COPY VERSION.txt /usr/local/bin/VERSION.txt
 
 RUN chmod +x /usr/local/bin/echo_version.sh
 
