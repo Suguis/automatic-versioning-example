@@ -18,12 +18,36 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
-      - name: Get Next Version
+      - name: Get next version
         id: semver
         uses: ietf-tools/semver-action@v1
         with:
           token: ${{ github.token }}
           branch: main
 
-      - name: Echo version
-        run: echo ${{ steps.semver.outputs.next_version }}
+      - name: Write version on VERSION.txt
+        run: |
+          echo "${{ steps.semver.outputs.next }}" > VERSION.txt
+
+      - name: Commit version bump
+        run: |
+          git add VERSION.txt
+          git commit -m "chore(version): bump version to ${{ steps.semver.outputs.next }}"
+          git push
+
+      - name: Create a lightweight tag
+        run: |
+          git tag ${{ steps.semver.outputs.next }}
+          git push origin ${{ steps.semver.outputs.next }}
+
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: |
+            Suguis/automatic-versioning-example
+            Suguis/automatic-versioning-example:${{ steps.semver.outputs.next }}
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
