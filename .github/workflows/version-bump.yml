@@ -53,8 +53,8 @@ jobs:
           context: .
           push: true
           tags: |
-            latest
-            ${{ steps.semver.outputs.next }}
+            ghcr.io/username/app:latest
+            ghcr.io/username/app:${{ steps.semver.outputs.next }}
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
