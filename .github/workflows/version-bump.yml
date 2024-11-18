@@ -53,8 +53,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/suguis/automatic-versioning-example:latest
-            ghcr.io/suguis/automatic-versioning-example:${{ steps.semver.outputs.next }}
+            user/app:latest
+            user/app:${{ steps.semver.outputs.next }}
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
