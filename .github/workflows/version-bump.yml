@@ -53,8 +53,8 @@ jobs:
           context: .
           push: true
           tags: |
-            user/app:latest
-            user/app:${{ steps.semver.outputs.next }}
+            latest
+            ${{ steps.semver.outputs.next }}
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
