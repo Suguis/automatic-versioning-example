@@ -1,6 +1,6 @@
 # Semantic Versioning Automation Example with GitHub Actions
 
-https://img.shields.io/github/v/tag/suguis/automatic-versioning-example?label=version
+![GitHub Tag](https://img.shields.io/github/v/tag/suguis/automatic-versioning-example?label=version)
 
 This repository is a practical example of how to automate semantic versioning of a project using GitHub Actions. The goal is to demonstrate how to use the tool to calculate and update the version of a project automatically, based on the commits made.
 
